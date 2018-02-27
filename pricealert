@@ -1,0 +1,32 @@
+import json
+import requests
+import time
+from time import gmtime, strftime
+import winsound
+
+
+
+#print binance
+
+while True:
+	api = "https://www.binance.com/api/v1/ticker/allPrices"
+	tag = ['BCCUSDT', 'ETHUSDT', 'BTCUSDT', ]
+	priceuplimit = [1700, 470, 8300]
+	pricelowlimit = [1600, 400, 8000]
+	binance = requests.get(api).json()
+	
+	for x,y,z in zip(tag, priceuplimit, pricelowlimit):
+		value = next(binancelist for binancelist in binance if binancelist["symbol"] == x)	
+		print value["symbol"], ":", value["price"]
+		
+		if float(value["price"]) > y:
+			print "shit is going up:", value["symbol"]
+			winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
+			
+		elif float(value["price"]) < z:
+			print "shit is going down:", value["symbol"]
+			winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
+			
+	print strftime("%H:%M:%S")
+	print "________________________________________________________________________"
+	time.sleep(30)
