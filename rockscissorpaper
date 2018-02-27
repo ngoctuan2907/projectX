@@ -1,0 +1,44 @@
+#rock paper scissor
+import time
+import random
+
+
+optionlist = ['paper', 'rock', 'scissor']
+
+
+ 
+outcome1 = {1:'scissor',2:'paper'}
+outcome2 = {1:'scissor', 2:'rock'}
+outcome3 = {1:'rock', 2:'scissor'}
+outcome4 = {1:'rock', 2:'paper'}
+outcome5 = {1:'paper', 2:'rock'}
+outcome6 = {1:'paper', 2:'scissor'}
+n = 3
+
+print "Are you ready for a game?"
+
+while (n > 0):
+	print n
+	n = n - 1
+	time.sleep(0.3)
+print "Lets play rock, paper, scissor game!"		
+
+while True:
+	val = random.randint(0,2)
+	player_1 = raw_input("Player one move:")
+	player_2 = optionlist[val]
+	print "Computer chose:", player_2
+
+	chosen = {1: player_1, 2: player_2}
+	if chosen == outcome1 or chosen == outcome3 or chosen == outcome5:
+		print "player 1 wins!"
+		
+	elif chosen == chosen == outcome2 or chosen == outcome4 or chosen == outcome6:
+		print "You lose noob!"
+		
+	elif player_1 == player_2:
+		print "it is a draw!"
+	
+	else:
+		print "Please enter the appropriate choice!"
+	time.sleep(1) 
